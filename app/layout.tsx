@@ -1,9 +1,14 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter as FontSans } from 'next/font/google'
 import '@/styles/globals.css'
 import Header from '@/components/Header'
+import { cn } from '@lib/utils'
+import { ThemeProvider } from '@/components/ThemeProvider'
 
-const inter = Inter({ subsets: ['latin'] })
+export const fontSans = FontSans({
+  subsets: ['latin'],
+  variable: "--font-sans",
+})
 
 export const metadata: Metadata = {
   title: 'Acendi Demo',
@@ -17,10 +22,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Header />
+      <head />
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable,)
+        }>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+
+
 
         {children}
+        </ThemeProvider>
       </body>
     </html>
   )
