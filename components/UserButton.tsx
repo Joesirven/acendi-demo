@@ -5,4 +5,3 @@ function UserButton() {
 }
 
 export default UserButton
-https://vercel.com/joesirven/terra-app
