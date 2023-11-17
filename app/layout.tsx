@@ -5,7 +5,7 @@ import Header from '@/components/Header'
 import { cn } from '@lib/utils'
 import { ThemeProvider } from '@/components/ThemeProvider'
 
-export const fontSans = FontSans({
+const fontSans = FontSans({
   subsets: ['latin'],
   variable: "--font-sans",
 })
