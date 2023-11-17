@@ -4,6 +4,7 @@ import '@/styles/globals.css'
 import Header from '@/components/Header'
 import { cn } from '@lib/utils'
 import { ThemeProvider } from '@/components/ThemeProvider'
+import ClientProviders from '@/components/ClientProviders'
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -21,25 +22,27 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head />
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable)}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
+    <ClientProviders>
+      <html lang="en" suppressHydrationWarning>
+        <head />
+        <body
+          className={cn(
+            "min-h-screen bg-background font-sans antialiased",
+            fontSans.variable)}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Header />
 
 
 
-        {children}
-        </ThemeProvider>
-      </body>
-    </html>
+          {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClientProviders>
   )
 }
