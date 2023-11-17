@@ -10,6 +10,10 @@ const fontSans = FontSans({
   variable: "--font-sans",
 })
 
+interface RootLayoutProps {
+  children: React.ReactNode
+}
+
 export const metadata: Metadata = {
   title: 'Acendi Demo',
   description: 'Demo for acendi rebuild',
@@ -17,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head />
       <body
         className={cn(
