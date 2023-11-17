@@ -15,19 +15,14 @@ export const metadata: Metadata = {
   description: 'Demo for acendi rebuild',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <head />
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,)
-        }>
+          fontSans.variable)}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
