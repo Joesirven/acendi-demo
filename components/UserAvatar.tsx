@@ -16,7 +16,7 @@ function UserAvatar({
             {image && (
                 <Image
                     src={image}
-                    alt={name}
+                    alt={name || "User"}
                     width={40}
                     height={40}
                     className="rounded-full"
