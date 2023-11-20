@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import DemoGif from "../assets/DemoGIF.gif";
+import DemoGif from "@assets/DemoGif.gif";
 
 export default function Home() {
   return (

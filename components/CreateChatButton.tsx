@@ -8,6 +8,8 @@ function CreateChatButton() {
     const router = useRouter();
 
     const createNewChat = () => {
+
+
         router.push('/chat/new');
     }
 
