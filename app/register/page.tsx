@@ -41,9 +41,6 @@ async function Register() {
         <PricingCards redirect={false} />
     </div>
     </div>
-
-
-
     );
 }
 

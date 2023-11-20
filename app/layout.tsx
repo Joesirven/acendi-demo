@@ -5,6 +5,7 @@ import Header from '@/components/Header'
 import { cn } from '@lib/utils'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import ClientProviders from '@/components/ClientProviders'
+import FirebaseAuthProvider from '@/components/FIrebaseAuthProvider'
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -29,18 +30,21 @@ export default function RootLayout({ children }: RootLayoutProps) {
           className={cn(
             "min-h-screen bg-background font-sans antialiased",
             fontSans.variable)}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Header />
+              <FirebaseAuthProvider>
+
+                  <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                  >
+                    <Header />
 
 
 
-          {children}
-          </ThemeProvider>
+                  {children}
+                  </ThemeProvider>
+              </FirebaseAuthProvider>
         </body>
       </html>
     </ClientProviders>
