@@ -1,6 +1,5 @@
 import { CheckIcon } from "lucide-react";
 import Link from "next/link";
-import { features } from "process"
 import CheckoutButton from "./CheckoutButton";
 
 const tiers = [
@@ -35,35 +34,49 @@ const tiers = [
 
 
 function PricingCards({ redirect }: { redirect: boolean }) {
-  return <div>
+  return (
+  <div>
         <div className="mx-auto grid max-w-md grid-cols-1 gap-8 lg:max-w-4xl lg:grid-cols-2">
             {tiers.map((tier) => (
                 <div
                     key={tier.id}
                     className="flex flex-col justify-between rounded-3xl bg-white p-8 shadow-xl
-                    ring-1 ring-gray-900 sm:p-18"
+                    ring-1 ring-gray-900/10 sm:p-10"
                     >
                     <div>
-                        <h3 className="text-2xl font-semibold text-indigo-600">
+                        <h3 id={tier.id + tier.name}
+                            className="text-base font-semibold leading-7 text-indigo-600"
+                        >
                             {tier.name}
                         </h3>
-                        <div className="mt-4 flex items-baseline text-gray-900">
-                            <span className="text-5xl font-extrabold tracking-tight">
-                                {tier.priceMonthly}
-                            </span>
-                            <span className="text-base font-semibold leading-7 text-gray-600">
-                                {tier.priceMonthly ? "/mo" : ""}
-                            </span>
+                        <div className="mt-4 flex items-baseline gap-x-2">
+                            {tier.priceMonthly ? (
+                                <>
+                                    <span className="text-5xl font-bold tracking-tight text-gray-900">
+                                        {tier.priceMonthly}
+                                    </span>
+                                    <span className="text-base font-semibold leading-7 text-gray-600">
+                                        /month
+                                    </span>
+                                </>
+
+                            ): (
+                                <span className="text-5xl font-bold tracking-tight text-gray-900">
+                                    Free
+                                </span>
+                            )}
                         </div>
-                        <p className="mt-6 text-gray-500">{tier.description}</p>
+                        <p className="mt-6 text-base leading-7 text-gray-500">
+                            {tier.description}
+                        </p>
                         <ul
-                        role="list"
-                        className="mt-10 space-y-4 text-sm leading-6 text-gray-600"
+                            role="list"
+                            className="mt-10 space-y-4 text-sm leading-6 text-gray-600"
                         >
                             {tier.features.map((feature) => (
                                 <li key={feature} className="flex gap-x-3">
                                     <CheckIcon
-                                        className="h-6 w-5 text-indigo-600"
+                                        className="h-6 w-5 flex-none text-indigo-600"
                                         aria-hidden="true"
                                     />
                                     {feature}
@@ -77,7 +90,7 @@ function PricingCards({ redirect }: { redirect: boolean }) {
                         leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2
                         focus-visible:outline-offset-2 focus-visible:outline-indigo-600 cursor-pointer
                         disabled:opacity-80">
-                            Get started today
+                            Get Started today
                         </Link>
                     ) : (
                         tier.id && <CheckoutButton />
@@ -86,7 +99,7 @@ function PricingCards({ redirect }: { redirect: boolean }) {
                 </div>
             ))}
         </div>
-    </div>;
+    </div>);
 };
 
 export default PricingCards
